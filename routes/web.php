@@ -60,7 +60,7 @@ Route::get("/books/{param}",function($param){
  
 });
 
-
+#get #post #patch #put
 Route::get('/iti','App\Http\Controllers\ITIController@getHomePage');
 Route::get('/students','App\Http\Controllers\ITIController@getStudents');
 Route::get('/aboutus','App\Http\Controllers\ITIController@aboutus');
@@ -68,4 +68,7 @@ Route::get('/contactus','App\Http\Controllers\ITIController@contactus');
 Route::get('/students/{studentNumber}','App\Http\Controllers\ITIController@getStudent');
 Route::get('/staff','App\Http\Controllers\ITIController@getStaff');
 Route::get("/info",'App\Http\Controllers\ITIController@info');
+Route::get("/addstudent","App\Http\Controllers\StudentsController@addstudent");
+Route::post("/submitstudent","App\Http\Controllers\StudentsController@submitStudent");
+Route::get("/dispalystudents","App\Http\Controllers\StudentsController@getAllStudents");
 
