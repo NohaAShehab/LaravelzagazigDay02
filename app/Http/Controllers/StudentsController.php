@@ -36,14 +36,58 @@ class StudentsController extends Controller
     
     }
 
-    function getAllStudents(){
+    // function getAllStudents(){
 
-        $data= Student::all();
+    //     $data= Student::all();
 
+    //     // dd($students);
+
+    //     return view("allstudents",["info"=>$data]);  #view name
+    // }
+
+    function listStudents(){
+        #get all students 
+        $students=Student::all();
         // dd($students);
-
-        return view("allstudents",["info"=>$data]);  #view name
-
+        #send the array to the view to be displayed
+        return view("allstudents",["data"=>$students]);
     }
+
+    function showstudent($student){
+        //dd($student);
+        #get info of this student
+        #select
+        // $student=Student::where("id",$student)->first();
+        // return $student ? view("showstudent",["student"=>$student]) : redirect("/dispalystudents");
+
+        $student=Student::findOrFail($student);
+        return  view("showstudent",["student"=>$student]);
+    }
+
+    function editStudent($student){
+        $student=Student::findOrFail($student);
+        return  view("editstudent",["student"=>$student]);
+    }
+
+    function updateStudent($student){
+        // dump($student);
+        // dump(request());
+        $studentInfo=Student::findOrFail($student);
+        $studentInfo->firstname=request("firstname");
+        $studentInfo->lastname=request("lastname");
+        $studentInfo->email=request("email");
+        $studentInfo->phone=request("phone");
+        $studentInfo->grade=request("grade");
+        $studentInfo->absent=request("absent");
+        $studentInfo->save();
+        return redirect("/showstudent/".$student);
+    }
+    function deleteStudent($student){
+        $studentInfo=Student::findOrFail($student);
+        $studentInfo->delete();
+        return redirect("/dispalystudents");
+    }
+
+
 
 }

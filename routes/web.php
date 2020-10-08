@@ -70,5 +70,41 @@ Route::get('/staff','App\Http\Controllers\ITIController@getStaff');
 Route::get("/info",'App\Http\Controllers\ITIController@info');
 Route::get("/addstudent","App\Http\Controllers\StudentsController@addstudent");
 Route::post("/submitstudent","App\Http\Controllers\StudentsController@submitStudent");
-Route::get("/dispalystudents","App\Http\Controllers\StudentsController@getAllStudents");
+// Route::get("/dispalystudents","App\Http\Controllers\StudentsController@getAllStudents");
+Route::get("/dispalystudents","App\Http\Controllers\StudentsController@listStudents");
+Route::get("/showstudent/{student}","App\Http\Controllers\StudentsController@showstudent");
+Route::get("/editstudent/{student}","App\Http\Controllers\StudentsController@editstudent");
+Route::post("/updatestudent/{student}","App\Http\Controllers\StudentsController@updateStudent");
+Route::get("/deletestudent/{student}","App\Http\Controllers\StudentsController@deleteStudent");
+
+
+#enhancement in routing style
+#controller resources
+#validation (insert, update)
+#different request methods (post,get, put, delete)
+#put=== patch method (update)
+
+#create route for the department
+#index 
+Route::get("/departments","App\Http\Controllers\DepartmentController@index");
+#create
+Route::get("/departments/create","App\Http\Controllers\DepartmentController@create");
+#store
+Route::post("/departments","App\Http\Controllers\DepartmentController@store");
+#show
+Route::get("/departments/{department}","App\Http\Controllers\DepartmentController@show");
+#edit
+Route::get("/departments/{department}/edit","App\Http\Controllers\DepartmentController@edit");
+#update
+Route::put("/departments/{department}","App\Http\Controllers\DepartmentController@update");
+#delete
+Route::delete("/departments/{department}","App\Http\Controllers\DepartmentController@destroy");
+
+
+
+
+
+
+
+
 
